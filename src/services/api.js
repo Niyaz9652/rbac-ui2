@@ -6,12 +6,16 @@ const API_BASE = "https://jsonplaceholder.typicode.com"; // Replace with your ac
 const mockUsers = [
   { id: 1, name: "John Doe", email: "john@example.com", role: "Admin", status: "Active" },
   { id: 2, name: "Jane Smith", email: "jane@example.com", role: "Editor", status: "Inactive" },
+  { id: 3, name: "Alice Johnson", email: "alice@example.com", role: "Viewer", status: "Active" },
+  { id: 4, name: "Bob Brown", email: "bob@example.com", role: "Admin", status: "Active" },
+  { id: 5, name: "Charlie Davis", email: "charlie@example.com", role: "Editor", status: "Inactive" },
 ];
 
 const mockRoles = [
   { id: 1, name: "Admin", permissions: ["Read", "Write", "Delete"] },
   { id: 2, name: "Editor", permissions: ["Read", "Write"] },
   { id: 3, name: "Viewer", permissions: ["Read"] },
+  { id: 4, name: "Moderator", permissions: ["Read", "Write"] },
 ];
 
 const mockPermissions = ["Read", "Write", "Delete"];
