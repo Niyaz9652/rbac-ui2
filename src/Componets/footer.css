@@ -1,0 +1,46 @@
+/* Footer background and text styles */
+.footer {
+    @apply bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white py-8;
+  }
+  
+  /* Container and layout styles */
+  .footer-container {
+    @apply max-w-6xl mx-auto px-4 flex flex-wrap justify-between items-center gap-6;
+  }
+  
+  /* Text styles */
+  .footer-text {
+    @apply text-sm;
+  }
+  
+  .footer-links {
+    @apply flex space-x-6;
+  }
+  
+  .footer-link {
+    @apply text-sm hover:text-gray-400 transition-colors;
+  }
+  
+  /* Social media icon styles */
+  .social-media-links {
+    @apply flex space-x-6;
+  }
+  
+  .social-media-icon {
+    @apply text-2xl hover:text-gray-400 transition-colors;
+  }
+  
+  /* Newsletter subscription input and button styles */
+  .newsletter-input {
+    @apply px-3 py-2 border border-gray-400 rounded-md w-64 focus:outline-none focus:ring focus:ring-blue-400;
+  }
+  
+  .newsletter-button {
+    @apply bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors;
+  }
+  
+  /* Back to top button styles */
+  .back-to-top {
+    @apply fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hidden hover:bg-blue-600 transition-colors;
+  }
+  

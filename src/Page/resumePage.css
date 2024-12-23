@@ -1,0 +1,51 @@
+/* resumePage.css */
+
+/* General Container Styles */
+.resume-content-container {
+  @apply max-w-7xl mx-auto bg-white rounded-lg shadow-lg p-8;
+}
+
+/* Achievements Section */
+.resume-achievements-title {
+  @apply text-2xl font-semibold text-gray-800 mb-4;
+}
+
+.resume-achievements-list {
+  @apply list-disc pl-6 text-gray-800 space-y-2;
+}
+
+/* Milestones Section */
+.resume-milestones-title {
+  @apply text-2xl font-semibold text-gray-800 mb-4;
+}
+
+.resume-milestones-grid {
+  /* Modify to display 4 images in a row */
+  @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6;
+}
+
+/* Milestone Styles */
+.resume-milestone {
+  @apply p-6 border border-gray-300 rounded-lg transition-transform transform hover:translate-y-[-5px] hover:shadow-lg bg-white;
+}
+
+.milestone-image {
+  @apply w-full h-40 object-cover rounded-lg mb-4;
+}
+
+.resume-milestone-title {
+  @apply text-xl font-semibold text-gray-800 mb-2;
+}
+
+.resume-milestone-text {
+  @apply text-gray-600;
+}
+
+/* Hover Effects */
+.resume-milestone:hover .milestone-image {
+  @apply filter brightness-90;
+}
+
+.resume-milestone:hover .resume-milestone-title {
+  @apply text-gray-900;
+}

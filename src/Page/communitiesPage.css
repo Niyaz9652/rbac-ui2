@@ -1,0 +1,64 @@
+
+
+/* Custom Animations */
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Classes */
+.fade-in-card {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transition-transform duration-300;
+  animation: fadeInCard 1s ease-out forwards;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center;
+}
+
+.modal-content {
+  @apply bg-white p-8 rounded-lg max-w-lg w-full;
+}
+
+.modal-title {
+  @apply text-2xl font-bold mb-4;
+}
+
+.modal-description {
+  @apply text-gray-600 text-sm;
+}
+
+.close-modal {
+  @apply bg-gray-800 text-white px-4 py-2 rounded-lg mt-4 cursor-pointer hover:bg-gray-900;
+}
+
+/* Hover Effects */
+.community-card:hover {
+  @apply -translate-y-1 shadow-2xl;
+}
+
+.community-title:hover {
+  @apply text-blue-500 underline;
+}
+
+.community-image:hover {
+  @apply scale-105 shadow-lg;
+}
+
+.image-gallery {
+  @apply flex gap-4 mt-4 overflow-x-auto;
+}
+
+.gallery-image {
+  @apply w-24 h-24 object-cover rounded-md transition-transform duration-300;
+}
+
+.gallery-image:hover {
+  @apply scale-110;
+}

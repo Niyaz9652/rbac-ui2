@@ -1,0 +1,56 @@
+/* Hero Section */
+.hero-section {
+  @apply flex justify-center items-center text-center mb-8 h-[200px];
+}
+
+.hero-title {
+  @apply text-3xl text-black font-bold;
+}
+
+/* Search Bar */
+.search-bar input {
+  @apply w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+
+/* Property List Section */
+.properties-list {
+  @apply grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+}
+
+/* Property Card */
+.property-card {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:translate-y-[-5px] hover:shadow-2xl cursor-pointer;
+}
+
+/* Property Image */
+.property-image {
+  @apply w-full h-64 object-cover transition-opacity duration-300 ease-in-out hover:opacity-90;
+}
+
+/* Property Details */
+.property-details {
+  @apply p-6 transition-all duration-300 ease-in-out hover:bg-gray-50;
+}
+
+/* Property Name */
+.property-name {
+  @apply text-xl font-semibold text-gray-800 mb-2;
+}
+
+/* Property Description */
+.property-description {
+  @apply text-gray-500 text-base mt-2;
+}
+
+/* Property Footer */
+.property-footer {
+  @apply flex justify-between items-center mt-4 font-semibold text-gray-700;
+}
+
+.property-price {
+  @apply text-green-500 text-lg;
+}
+/* Search Bar */
+.search-bar input {
+  @apply w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400;
+}

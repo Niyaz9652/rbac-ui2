@@ -1,0 +1,47 @@
+/* propertiesPage.css */
+
+/* Hero Section */
+.hero-section {
+  @apply flex justify-center items-center text-center mb-8 h-[200px];
+}
+
+.hero-title {
+  @apply text-4xl font-extrabold text-gray-800 animate__animated animate__fadeIn;
+}
+
+/* Properties List Section */
+.properties-list {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.property-card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden;
+}
+
+.property-image {
+  @apply w-full h-64 object-cover;
+}
+
+.property-details {
+  @apply p-6;
+}
+
+.property-name {
+  @apply text-xl font-semibold text-gray-800;
+}
+
+.property-description {
+  @apply text-gray-600 mt-2;
+}
+
+.property-footer {
+  @apply mt-4 flex items-center justify-between;
+}
+
+.view-details-button {
+  @apply bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors duration-300 hover:bg-blue-700;
+}
+
+.property-price {
+  @apply text-gray-700 font-semibold;
+}

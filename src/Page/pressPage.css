@@ -1,0 +1,90 @@
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+/* Hero Section */
+.hero-section {
+  @apply text-center mb-8 h-[200px];
+}
+
+.hero-title {
+  @apply text-4xl font-extrabold text-gray-800;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-subtitle {
+  @apply text-lg text-gray-600 mt-4;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+/* Increased container size */
+.press-article-container {
+  @apply max-w-full mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Press Article Style */
+.press-article {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300;
+}
+
+.press-article:hover {
+  @apply translate-y-[-10px] shadow-2xl;
+}
+
+.press-article-image {
+  @apply w-full h-56 object-cover transition-transform duration-300;
+}
+
+.press-article:hover .press-article-image {
+  @apply scale-105;
+}
+
+.press-article-content {
+  @apply p-6;
+}
+
+.press-article-title {
+  @apply text-xl font-semibold text-gray-800 transition-colors duration-300;
+}
+
+.press-article-title:hover {
+  @apply text-blue-600;
+}
+
+.press-article-text {
+  @apply text-gray-600 mt-2;
+}
+
+.read-more-button {
+  @apply mt-4 text-blue-600 border border-blue-600 py-2 px-4 rounded-md transition-all duration-300;
+}
+
+.read-more-button:hover {
+  @apply bg-blue-600 text-white;
+}

@@ -1,5 +1,6 @@
 import React from "react";
-
+import { Link } from "react-router-dom"; // Import Link for navigation
+ 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -12,16 +13,32 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    // Log error details to the console or external service
+    // Log error details to the console or an external service
     console.error("ErrorBoundary caught an error", error, info);
   }
+
+  handleRetry = () => {
+    // Reset error state to retry rendering child components
+    this.setState({ hasError: false });
+  };
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-4 text-red-500">
-          <h1>Something went wrong.</h1>
-          <p>Please refresh the page or try again later.</p>
+        <div className="error-container">
+          <h1 className="error-title">Something went wrong.</h1>
+          <p className="error-message">
+            We're sorry for the inconvenience. Please try refreshing the page or
+            return to the homepage.
+          </p>
+          <div className="error-actions">
+            <button onClick={this.handleRetry} className="error-button">
+              Retry
+            </button>
+            <Link to="/" className="error-link">
+              Go to Homepage
+            </Link>
+          </div>
         </div>
       );
     }

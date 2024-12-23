@@ -1,0 +1,60 @@
+
+
+/* Navbar Container */
+.navbar-container {
+  @apply fixed top-0 w-full z-50 bg-black/70 text-white transition duration-300;
+}
+
+/* Navbar Content */
+.navbar-content {
+  @apply flex justify-between items-center px-5 py-4;
+}
+
+/* Logo */
+.logo {
+  @apply text-xl italic font-bold tracking-wide;
+}
+
+/* Links for Desktop */
+.navbar-links {
+  @apply hidden md:flex space-x-5 list-none;
+}
+
+.navbar-links a {
+  @apply text-white italic text-base no-underline hover:font-semibold transition-all;
+}
+
+.navbar-links a.active {
+  @apply font-bold border-b-2 border-white;
+}
+
+/* Dropdown Menu */
+.navbar-dropdown {
+  @apply relative;
+}
+
+.navbar-dropdown .dropdown-menu {
+  @apply hidden absolute top-full left-0 bg-white text-black p-3 list-none min-w-[160px] rounded-lg shadow-lg transition-all duration-300 opacity-0 transform -translate-y-2 z-50;
+}
+
+.navbar-dropdown:hover .dropdown-menu {
+  @apply block opacity-100 transform-none;
+}
+
+.dropdown-menu li a {
+  @apply text-black no-underline italic hover:underline hover:text-blue-500;
+}
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  @apply md:hidden bg-none border-none text-white text-2xl cursor-pointer focus:outline-none;
+}
+
+/* Mobile Links */
+.navbar-links.mobile-open {
+  @apply flex flex-col items-center absolute top-[70px] left-0 w-full bg-black/90 space-y-4 z-50 p-4 md:hidden;
+}
+
+.navbar-links.mobile-open a {
+  @apply text-white italic text-lg w-full text-center py-2 border-b border-gray-600;
+}

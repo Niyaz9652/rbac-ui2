@@ -1,0 +1,49 @@
+/* General Styles for the Hero Component */
+.hero-container {
+  @apply relative h-screen overflow-hidden flex justify-center items-center;
+}
+
+.hero-video {
+  @apply absolute top-0 left-0 w-full h-full object-cover -z-10;
+}
+
+.hero-overlay {
+  @apply relative text-center text-white z-10 px-6 flex flex-col items-center gap-8;
+}
+
+/* Title Section */
+.hero-title-section {
+  @apply flex flex-col items-center gap-4;
+}
+
+.hero-title {
+  @apply text-5xl md:text-6xl font-bold italic uppercase leading-tight text-white;
+}
+
+.hero-subtitle {
+  @apply text-lg md:text-2xl italic capitalize leading-relaxed text-white;
+}
+
+/* Buttons Section */
+.hero-buttons {
+  @apply flex flex-col md:flex-row gap-4 justify-center;
+}
+
+.hero-button {
+  @apply inline-block px-6 py-3 text-lg font-bold text-white bg-white/20 rounded-lg
+    hover:bg-white/30 hover:scale-105 transition-transform duration-300 shadow-none;
+}
+
+.hero-button-secondary {
+  @apply inline-block px-6 py-3 text-lg font-bold text-white border border-white rounded-lg
+    hover:bg-white hover:text-black hover:scale-105 transition-transform duration-300 shadow-none;
+}
+
+/* Scroll Indicator */
+.hero-scroll-indicator {
+  @apply flex items-center justify-center mt-6;
+}
+
+.hero-scroll-indicator span {
+  @apply block w-3 h-3 bg-white rounded-full animate-bounce;
+}
