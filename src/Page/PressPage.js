@@ -13,7 +13,7 @@ const PressPage = () => {
     <div className="bg-gray-50 py-16 px-6 md:px-16">
       {/* Hero Section */}
       <div className="flex justify-center items-center text-center mb-8 h-[200px]">
-        <h1 className="text-4xl font-extrabold text-gray-800 animate-fade-in">Press & Media</h1>
+        <h1 className="text-4xl font-semibold text-center mb-8">Press & Media</h1>
       </div>
 
       {/* Press Articles Section */}

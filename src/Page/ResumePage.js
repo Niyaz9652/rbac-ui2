@@ -6,7 +6,7 @@ const ResumePage = () => {
     <div className="bg-gray-50 py-10 px-6 md:px-10">
       {/* Header Section */}
       <div className="flex justify-center items-center text-center mb-8 h-[200px]">
-        <h1 className="text-4xl font-extrabold text-gray-800">Recent Achievements</h1>
+        <h1 className="text-4xl font-semibold text-center mb-8">Recent Achievements</h1>
       </div>
 
       {/* Resume Content Container */}

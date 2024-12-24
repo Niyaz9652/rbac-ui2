@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './communitiesPage.css'; // Import Tailwind-based CSS file
+import './communitiesPage.css'; // Import the CSS file for Tailwind-based styles
 
 const CommunitiesPage = () => {
   const [selectedCommunity, setSelectedCommunity] = useState(null);
@@ -51,7 +51,7 @@ const CommunitiesPage = () => {
   return (
     <div className="bg-gray-50 py-12 px-4 md:px-12">
       <div className="flex justify-center items-center text-center mb-8 h-40">
-        <h1 className="text-3xl font-extrabold text-gray-800 animate-fadeIn">Our Communities</h1>
+        <h1 className="page-title">Our Communities</h1>
       </div>
       <div className="mb-4 flex justify-center">
         <input
@@ -59,14 +59,14 @@ const CommunitiesPage = () => {
           placeholder="Search Communities..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md w-full max-w-sm"
+          className="search-input w-full max-w-sm"
         />
       </div>
       <div className="mb-4 flex justify-center">
         <select
           value={sortedBy}
           onChange={(e) => setSortedBy(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md"
+          className="sort-select"
         >
           <option value="name">Sort by Name</option>
           <option value="description">Sort by Description</option>
@@ -75,12 +75,12 @@ const CommunitiesPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sortedCommunities.map((community, index) => (
           <div
-            className="fade-in-card"
+            className="fade-in-card community-card"
             key={index}
             onClick={() => handleCommunityClick(community)}
           >
             <img
-              className="w-full h-56 object-cover"
+              className="community-image"
               src={community.image}
               alt={community.title}
               loading="lazy"
@@ -93,8 +93,8 @@ const CommunitiesPage = () => {
                   e.stopPropagation();
                   handleFavoriteClick(community);
                 }}
-                className={`mt-2 ${
-                  favorites.includes(community.title) ? 'text-yellow-500' : 'text-gray-500'
+                className={`favorite-btn ${
+                  favorites.includes(community.title) ? 'favorite-btn-active' : ''
                 }`}
               >
                 {favorites.includes(community.title) ? '★ Favorite' : '☆ Add to Favorites'}

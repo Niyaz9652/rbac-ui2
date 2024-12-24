@@ -48,9 +48,9 @@ const TeamPage = () => {
 
   return (
     <div className="team-page">
-      <div className="hero-section">
-        <h1 className="hero-title">Meet Our Team</h1>
-      </div>
+      
+        <h1 className="text-4xl font-semibold text-center mb-8" >Meet Our Team</h1>
+      
 
       {/* Search Bar */}
       <div className="search-bar">

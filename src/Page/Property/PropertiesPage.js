@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import fetchProperties from '../../Service/propertyService'; // Corrected import
-import { Outlet } from 'react-router-dom'; // Import Outlet for sub-routes
-import '../Property/recentSalesPage.css'; // Import the custom CSS file
+import fetchProperties from '../../Service/propertyService';
+import { Outlet } from 'react-router-dom';
+import '../Property/recentSalesPage.css';
 
 const PropertiesPage = () => {
   const [properties, setProperties] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(0); // Track current page
+  const [expandedProperty, setExpandedProperty] = useState(null); // Track which property is expanded
+
+  const itemsPerPage = 3; // Number of containers to display at a time
 
   useEffect(() => {
     const loadProperties = async () => {
       try {
-        const data = await fetchProperties(); // Correctly calling the default export
+        const data = await fetchProperties();
         setProperties(data);
       } catch (error) {
         console.error('Failed to load properties:', error);
@@ -19,7 +23,7 @@ const PropertiesPage = () => {
     loadProperties();
   }, []);
 
-  // Filter properties based on the search query
+  // Filtered properties based on search query
   const filteredProperties = searchQuery
     ? properties.filter(
         (property) =>
@@ -28,12 +32,32 @@ const PropertiesPage = () => {
       )
     : properties;
 
+  // Paginate properties
+  const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
+  const paginatedProperties = filteredProperties.slice(
+    currentPage * itemsPerPage,
+    currentPage * itemsPerPage + itemsPerPage
+  );
+
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const toggleExpand = (propertyId) => {
+    setExpandedProperty((prev) => (prev === propertyId ? null : propertyId));
+  };
+
   return (
     <div className="bg-gray-100 py-16 px-6 md:px-16">
-      {/* Hero Section */}
-      <div className="hero-section">
-        <h1 className="hero-title">Properties</h1>
-      </div>
+      <h1 className="text-4xl font-semibold text-center mb-8">Properties</h1>
 
       {/* Search Bar */}
       <div className="search-bar mb-8">
@@ -48,23 +72,37 @@ const PropertiesPage = () => {
 
       {/* Properties List Section */}
       <div className="properties-list">
-        {filteredProperties.map((property) => (
-          <div className="property-card" key={property.id}>
+        {paginatedProperties.map((property) => (
+          <div
+            className={`property-card ${
+              expandedProperty === property.id ? "expanded" : ""
+            }`}
+            key={property.id}
+          >
+            {/* Image */}
             <img
               src={property.imageUrl}
               alt={property.name}
-              className="property-image"
+              className="property-image cursor-pointer"
+              onClick={() => toggleExpand(property.id)}
             />
-            <div className="property-details">
-              <h2 className="property-name">{property.name}</h2>
-              <p className="property-description">{property.address}</p>
-              <div className="property-footer">
-                <button className="view-details-button">View Details</button>
-                <span className="property-price">
-                  ${property.price.toLocaleString()}
-                </span>
+
+            {/* Text content (only visible if expanded) */}
+            {expandedProperty === property.id && (
+              <div className="property-expanded-content">
+                <div className="property-details">
+                  <h2 className="property-name">{property.name}</h2>
+                  <p className="property-description">{property.address}</p>
+                  <p className="property-description">{property.description}</p>
+                  <div className="property-footer">
+                    <button className="view-details-button">View Details</button>
+                    <span className="property-price">
+                      ${property.price.toLocaleString()}
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         ))}
 
@@ -74,8 +112,26 @@ const PropertiesPage = () => {
         )}
       </div>
 
+      {/* Pagination Controls */}
+      <div className="pagination-controls mt-8 flex justify-center gap-4">
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === 0}
+          className="pagination-arrow bg-gray-300 hover:bg-gray-400 text-white px-4 py-2 rounded disabled:opacity-50"
+        >
+          ← Previous
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages - 1}
+          className="pagination-arrow bg-gray-300 hover:bg-gray-400 text-white px-4 py-2 rounded disabled:opacity-50"
+        >
+          Next →
+        </button>
+      </div>
+
       {/* Nested Routes Section */}
-      <Outlet /> {/* Renders the sub-pages like CurrentListingsPage, RecentSalesPage, and HomeSearchPage */}
+      <Outlet />
     </div>
   );
 };

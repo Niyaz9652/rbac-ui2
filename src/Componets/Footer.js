@@ -111,7 +111,7 @@ const Footer = () => (
   <footer className="footer">
     <div className="footer-container">
       <div className="footer-text">
-        <p>&copy; 2024 Joyce Rey. All Rights Reserved.</p>
+        <p>&copy; 2024 Leapot. All Rights Reserved.</p>
       </div>
       <FooterLinks />
       <SocialMediaLinks />

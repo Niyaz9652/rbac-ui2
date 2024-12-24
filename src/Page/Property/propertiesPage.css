@@ -1,29 +1,22 @@
-/* propertiesPage.css */
-
-/* Hero Section */
-.hero-section {
-  @apply flex justify-center items-center text-center mb-8 h-[200px];
-}
-
-.hero-title {
-  @apply text-4xl font-extrabold text-gray-800 animate__animated animate__fadeIn;
-}
-
-/* Properties List Section */
-.properties-list {
-  @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
-}
-
+/* Initial Image-Only View */
 .property-card {
-  @apply bg-white rounded-lg shadow-md overflow-hidden;
+  @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform;
+}
+.property-card img {
+  @apply w-full h-64 object-cover cursor-pointer;
 }
 
-.property-image {
-  @apply w-full h-64 object-cover;
+/* Expanded View */
+.property-card.expanded {
+  @apply bg-gray-50; /* Slight background color change when expanded */
+}
+
+.property-expanded-content {
+  @apply p-4 bg-gray-100 text-gray-700 mt-4;
 }
 
 .property-details {
-  @apply p-6;
+  @apply text-left;
 }
 
 .property-name {
@@ -44,4 +37,17 @@
 
 .property-price {
   @apply text-gray-700 font-semibold;
+}
+
+/* Pagination Controls */
+.pagination-controls button {
+  @apply text-lg font-medium transition-all duration-300;
+}
+
+.pagination-arrow:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.pagination-arrow {
+  @apply px-4 py-2 bg-gray-300 rounded-lg text-gray-700 hover:bg-gray-400 transition;
 }

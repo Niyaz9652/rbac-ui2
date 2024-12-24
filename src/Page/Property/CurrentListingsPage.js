@@ -5,6 +5,10 @@ import './currentListings.css';
 function CurrentListingsPage() {
   const [properties, setProperties] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(0); // Current page index
+  const [expandedProperty, setExpandedProperty] = useState(null); // Track expanded property
+
+  const itemsPerPage = 3; // Number of properties to display per page
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,12 +29,34 @@ function CurrentListingsPage() {
       property.address.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
+  const paginatedProperties = filteredProperties.slice(
+    currentPage * itemsPerPage,
+    currentPage * itemsPerPage + itemsPerPage
+  );
+
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const toggleExpand = (propertyId) => {
+    setExpandedProperty((prev) => (prev === propertyId ? null : propertyId));
+  };
+
   return (
     <div className="bg-gray-100 py-16 px-6 md:px-16">
       {/* Hero Section */}
-      <div className="hero-section">
-        <h1 className="hero-title">Current Listings</h1>
-      </div>
+      <h1 className="text-4xl font-semibold text-center mb-8">Current Listings</h1>
+
 
       {/* Search Bar */}
       <div className="search-bar-container">
@@ -45,25 +71,58 @@ function CurrentListingsPage() {
 
       {/* Property Listings Section */}
       <div className="property-grid">
-        {filteredProperties.map((property) => (
-          <div key={property.id} className="property-card">
-            <div className="property-badge">${property.rate}</div>
+        {paginatedProperties.map((property) => (
+          <div
+            key={property.id}
+            className={`property-card ${
+              expandedProperty === property.id ? 'expanded' : ''
+            }`}
+          >
+            {/* Image */}
             <img
               src={property.imageUrl}
               alt={property.name}
-              className="property-image"
+              className="property-image cursor-pointer"
+              onClick={() => toggleExpand(property.id)}
             />
-            <h3 className="property-title">{property.name}</h3>
-            <p className="property-address">{property.address}</p>
-            <div className="property-footer">
-              <p className="property-price">${property.price}</p>
-              <button className="view-details-button">View Details</button>
-            </div>
+
+            {/* Text content (visible only if expanded) */}
+            {expandedProperty === property.id && (
+              <div className="property-details">
+                <div className="property-badge">${property.rate}</div>
+                <h3 className="property-title">{property.name}</h3>
+                <p className="property-address">{property.address}</p>
+                <div className="property-footer">
+                  <p className="property-price">${property.price}</p>
+                  <button className="view-details-button">View Details</button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
+
+        {/* Empty State */}
         {filteredProperties.length === 0 && (
           <p className="empty-state">No properties found.</p>
         )}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="pagination-controls mt-8 flex justify-center gap-4">
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === 0}
+          className="pagination-arrow bg-gray-300 hover:bg-gray-400 text-white px-4 py-2 rounded disabled:opacity-50"
+        >
+          ← Previous
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages - 1}
+          className="pagination-arrow bg-gray-300 hover:bg-gray-400 text-white px-4 py-2 rounded disabled:opacity-50"
+        >
+          Next →
+        </button>
       </div>
     </div>
   );

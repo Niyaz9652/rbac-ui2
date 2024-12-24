@@ -11,16 +11,14 @@ import PressPage from "./Page/PressPage";
 import TestimonialsPage from "./Page/TestimonialsPage";
 import ContactPage from "./Page/ContactPage";
 
-
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/resume" element={<ResumePage />} />
       <Route path="/team" element={<TeamPage />} />
       <Route path="/communities" element={<CommunitiesPage />} />
-     
 
-      {/* Properties Routes */}
+      {/* Property Routes */}
       <Route path="/properties" element={<PropertiesPage />} />
       <Route path="/properties/current-listings" element={<CurrentListingsPage />} />
       <Route path="/properties/recent-sales" element={<RecentSalesPage />} />
@@ -31,7 +29,7 @@ const AppRoutes = () => {
       <Route path="/contact" element={<ContactPage />} />
 
       {/* Default Route */}
-      <Route path="/" element={<PropertiesPage />} />
+      <Route path="/prop" element={<PropertiesPage />} />
     </Routes>
   );
 };

@@ -1,9 +1,7 @@
 /* contactpage.css */
 
 /* Custom styles for the ContactPage */
-.contact-header {
-  @apply text-3xl font-bold text-gray-800 text-center mb-6 h-32;
-}
+
 
 .contact-video-section,
 .contact-form-container {

@@ -1,10 +1,6 @@
 /* Hero Section */
-.hero-section {
-  @apply flex justify-center items-center text-center mb-8 h-[200px];
-}
-
 .hero-title {
-  @apply text-3xl text-gray-800;
+  @apply text-3xl font-bold text-gray-800 text-center;
 }
 
 /* Search Bar */
@@ -22,31 +18,35 @@
 }
 
 .property-card {
-  @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transform hover:translate-y-1 transition-all;
-}
-
-.property-badge {
-  @apply bg-blue-600 text-white font-semibold text-sm py-1 px-3 rounded mb-4 inline-block;
+  @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300;
 }
 
 .property-image {
-  @apply w-full h-48 object-cover rounded-md mb-4 hover:scale-105 transition-transform duration-300;
+  @apply w-full h-48 object-cover cursor-pointer;
+}
+
+.property-card.expanded .property-details {
+  @apply p-4;
+}
+
+.property-badge {
+  @apply bg-blue-600 text-white font-semibold text-sm py-1 px-3 rounded inline-block mb-2;
 }
 
 .property-title {
-  @apply text-lg font-semibold mb-2;
+  @apply text-lg font-semibold text-gray-800;
 }
 
 .property-address {
-  @apply text-gray-500 mb-4;
+  @apply text-gray-500 mb-2;
 }
 
 .property-footer {
-  @apply flex justify-between items-center;
+  @apply flex justify-between items-center mt-4;
 }
 
 .property-price {
-  @apply font-bold text-lg text-gray-800;
+  @apply text-lg font-bold text-gray-700;
 }
 
 .view-details-button {
@@ -56,4 +56,13 @@
 /* Empty State */
 .empty-state {
   @apply text-center text-gray-600 col-span-full;
+}
+
+/* Pagination Controls */
+.pagination-controls button {
+  @apply text-lg font-medium transition-all duration-300;
+}
+
+.pagination-arrow:disabled {
+  @apply cursor-not-allowed opacity-50;
 }
