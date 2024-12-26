@@ -6,9 +6,9 @@ function CurrentListingsPage() {
   const [properties, setProperties] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(0); // Current page index
-  const [expandedProperty, setExpandedProperty] = useState(null); // Track expanded property
+  const [expandedProperty, setExpandedProperty] = useState(null);
 
-  const itemsPerPage = 3; // Number of properties to display per page
+  const itemsPerPage = 3;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +29,6 @@ function CurrentListingsPage() {
       property.address.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
   const paginatedProperties = filteredProperties.slice(
     currentPage * itemsPerPage,
@@ -53,12 +52,9 @@ function CurrentListingsPage() {
   };
 
   return (
-    <div className="bg-gray-100 py-16 px-6 md:px-16">
-      {/* Hero Section */}
-      <h1 className="text-4xl font-semibold text-center mb-8">Current Listings</h1>
+    <div className="listings-page">
+      <h1 className="text-4xl font-semibold text-gray-800 mb-8 text-center">Current Listings</h1>
 
-
-      {/* Search Bar */}
       <div className="search-bar-container">
         <input
           type="text"
@@ -69,7 +65,6 @@ function CurrentListingsPage() {
         />
       </div>
 
-      {/* Property Listings Section */}
       <div className="property-grid">
         {paginatedProperties.map((property) => (
           <div
@@ -78,15 +73,13 @@ function CurrentListingsPage() {
               expandedProperty === property.id ? 'expanded' : ''
             }`}
           >
-            {/* Image */}
             <img
               src={property.imageUrl}
               alt={property.name}
-              className="property-image cursor-pointer"
+              className="property-image"
               onClick={() => toggleExpand(property.id)}
             />
 
-            {/* Text content (visible only if expanded) */}
             {expandedProperty === property.id && (
               <div className="property-details">
                 <div className="property-badge">${property.rate}</div>
@@ -101,25 +94,23 @@ function CurrentListingsPage() {
           </div>
         ))}
 
-        {/* Empty State */}
         {filteredProperties.length === 0 && (
           <p className="empty-state">No properties found.</p>
         )}
       </div>
 
-      {/* Pagination Controls */}
-      <div className="pagination-controls mt-8 flex justify-center gap-4">
+      <div className="pagination-controls">
         <button
           onClick={handlePrevious}
           disabled={currentPage === 0}
-          className="pagination-arrow bg-gray-300 hover:bg-gray-400 text-white px-4 py-2 rounded disabled:opacity-50"
+          className="pagination-arrow"
         >
           ← Previous
         </button>
         <button
           onClick={handleNext}
           disabled={currentPage === totalPages - 1}
-          className="pagination-arrow bg-gray-300 hover:bg-gray-400 text-white px-4 py-2 rounded disabled:opacity-50"
+          className="pagination-arrow"
         >
           Next →
         </button>
